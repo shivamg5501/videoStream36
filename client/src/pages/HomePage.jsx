@@ -7,30 +7,30 @@ import { useVideoContext } from '../context/VideoContext';
 const HomePage = () => {
   const { loadVideos, selectedTags, handleTagSelect } = useVideoContext();
 
-  async function getVideoUrl() {
-    const response = await fetch("https://mydaddy.cc/video/30b8014701a62370cb/");
-    const html = await response.text();
+//   async function getVideoUrl() {
+//     const response = await fetch("https://mydaddy.cc/video/30b8014701a62370cb/");
+//     const html = await response.text();
 
-    // Extract the actual .mp4 file URL using regex
-    const videoMatch = html.match(/https:\/\/s\d+\.bigcdn\.cc\/pubs\/[a-zA-Z0-9._\/-]+\.mp4/);
+//     // Extract the actual .mp4 file URL using regex
+//     const videoMatch = html.match(/https:\/\/s\d+\.bigcdn\.cc\/pubs\/[a-zA-Z0-9._\/-]+\.mp4/);
     
-    if (videoMatch) {
-        return videoMatch[0]; // Return the extracted URL
-    } else {
-        console.error("Video URL not found!");
-        return null;
-    }
-}
+//     if (videoMatch) {
+//         return videoMatch[0]; // Return the extracted URL
+//     } else {
+//         console.error("Video URL not found!");
+//         return null;
+//     }
+// }
 
-async function loadVideo() {
-    const videoUrl = await getVideoUrl();
-    if (videoUrl) {
-        document.getElementById("videoPlayer").src = videoUrl;
-    }
-}
+// async function loadVideo() {
+//     const videoUrl = await getVideoUrl();
+//     if (videoUrl) {
+//         document.getElementById("videoPlayer").src = videoUrl;
+//     }
+// }
 
-// Run function when the page loads
-window.onload = loadVideo;
+// // Run function when the page loads
+// window.onload = loadVideo;
   
   useEffect(() => {
     loadVideos(1);

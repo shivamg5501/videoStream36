@@ -9,16 +9,26 @@ const videos = [
   {
     title: "Sample Video 1",
     description: "This is an action movie",
-    key: "videos/123.mp4",
+    videoKey: "videos/123.mp4",
+    imageKey: "images/123.jpg ",
     tags: ["action", "hd", "english"],
     duration: "10:05",
   },
   {
     title: "React Tutorial",
     description: "Learn React basics",
-    key: "videos/124.mp4",
+    videoKey: "videos/124.mp4",
+    imageKey: "images/124.jpg",
     tags: ["react", "webdev"],
     duration: "15:32",
+  },
+  {
+    title: "Third one",
+    description: "third desciption",
+    videoKey: "videos/125.mp4",
+    imageKey: "images/125.jpg",
+    tags: ["1080p", "webdev"],
+    duration: "45:32",
   },
 ];
 

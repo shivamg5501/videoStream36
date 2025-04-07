@@ -2,13 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const VideoCard = ({ video }) => {
-  console.log("video",video);
+  console.log("videocasrd",video);
   return (
     <div className="bg-gray-800 rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105">
       <Link to={`/video/${video._id}`}>
         <div className="relative pb-[56.25%]">
           <img 
-            src={video.thumbnailUrl} 
+            src={video.thumbnail} 
             alt={video.title}
             className="absolute top-0 left-0 w-full h-full object-cover"
             loading="lazy"

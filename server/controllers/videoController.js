@@ -1,6 +1,7 @@
 const Video = require('../models/Video');
 const { getPagination } = require('../utils/pagination');
-const getSignedVideoUrl = require("../utils/r2");
+const { getSignedVideoUrl, getSignedImageUrl } = require("../utils/r2");
+
 const mongoose = require('mongoose');
 
 // Get all videos with pagination and optional tag filtering
@@ -25,10 +26,12 @@ const getVideos = async (req, res) => {
       .lean();
 
     const withSignedUrls = await Promise.all(videos.map(async (video) => {
-      const signedUrl = await getSignedVideoUrl(video.key);
+      const signedUrl = await getSignedVideoUrl(video.videoKey);
+      const thumbnail = await getSignedImageUrl(video.imageKey);
       return {
         ...video,
         mp4: signedUrl, // this can now be directly used in <video src={mp4} />
+        thumbnail:thumbnail
       };
     }));
 
@@ -52,11 +55,12 @@ const getVideoById = async (req, res) => {
       return res.status(404).json({ message: 'Video not found' });
     }
 
-    const signedUrl = await getSignedVideoUrl(video.key);
-
+    const signedUrl = await getSignedVideoUrl(video.videoKey);
+    const thumbnail = await getSignedImageUrl(video.imageKey);
     res.json({
       ...video,
-      mp4: signedUrl
+      mp4: signedUrl,
+      thumbnail:thumbnail
     });
 
   } catch (error) {
@@ -87,10 +91,12 @@ const getRelatedVideos = async (req, res) => {
       .lean();
 
     const withSignedUrls = await Promise.all(relatedVideos.map(async (vid) => {
-      const signedUrl = await getSignedVideoUrl(vid.key);
+      const signedUrl = await getSignedVideoUrl(vid.videoKey);
+      const thumbnail = await getSignedImageUrl(vid.imageKey);
       return {
         ...vid,
-        mp4: signedUrl
+        mp4: signedUrl,
+        thumbnail:thumbnail
       };
     }));
 

@@ -10,7 +10,11 @@ const VideoSchema = new mongoose.Schema({
     type: String,
     trim: true
   },
-  key: {
+  videoKey: {
+    type: String,
+    required: true
+  },
+  imageKey: {
     type: String,
     required: true
   },

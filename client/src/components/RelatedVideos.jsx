@@ -18,7 +18,7 @@ const RelatedVideos = ({ videos, currentVideoId }) => {
             >
               <div className="relative flex-shrink-0 w-36">
                 <img 
-                  src={video.thumbnailUrl} 
+                  src={video.thumbnail} 
                   alt={video.title} 
                   className="w-full h-20 object-cover rounded-md"
                   loading="lazy" 
